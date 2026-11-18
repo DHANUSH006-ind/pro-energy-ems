@@ -1,0 +1,4 @@
+nicegui
+pymodbus
+pyserial
+openpyxl
