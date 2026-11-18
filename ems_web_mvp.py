@@ -191,17 +191,17 @@ def export_excel():
     ui.notify(f"Exported {len(rows)} records to {filename}", type="positive")
 
 # ==========================================
-# 5. PROFESSIONAL LIGHT THEME UI (Render.com Style)
+# 5. PROFESSIONAL LIGHT THEME & CLEAN UI
 # ==========================================
-# Force clean light theme background
 ui.add_head_html('<style>body { background-color: #f8fafc; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>')
 
+# Header with Official Pro Energy Logo and Professional Styling
 with ui.header().classes("bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between shadow-sm"):
-    with ui.row().classes("items-center gap-3"):
-        ui.icon("bolt", size="28px").classes("text-indigo-600")
+    with ui.row().classes("items-center gap-4"):
+        ui.image("https://i.ibb.co/68H8Lp8w/logo.png").style("height: 42px; width: auto; object-fit: contain;")
         with ui.column().classes("gap-0"):
-            ui.label("PRO ENERGY AUTOMATIONS — EMS & SCADA").classes("text-base font-bold tracking-tight text-slate-900")
-            ui.label("Real-Time WAGES & Electrical Monitoring | EDS").classes("text-xs text-slate-500")
+            ui.label("INTEGRATED EMS & SCADA PLATFORM").classes("text-xs font-bold tracking-wider text-slate-400 uppercase")
+            ui.label("Pro Energy Automations | Enterprise Dashboard").classes("text-sm font-semibold text-slate-800")
     with ui.row().classes("items-center gap-3"):
         status_badge = ui.badge("SYSTEM STANDBY", color="grey").classes("text-xs px-3 py-1 font-semibold")
         ui.button("EXPORT EXCEL", icon="download", on_click=export_excel).props("color=indigo outline size=sm")
@@ -209,7 +209,7 @@ with ui.header().classes("bg-white border-b border-slate-200 px-6 py-3 flex item
 with ui.column().classes("w-full max-w-7xl mx-auto p-6 gap-5"):
 
     # Alert Banner
-    alert_card = ui.card().classes("w-full bg-slate-50 border border-slate-200 shadow-none px-4 py-3")
+    alert_card = ui.card().classes("w-full bg-slate-50 border border-slate-200 shadow-none px-4 py-3 rounded-xl")
     with alert_card:
         with ui.row().classes("items-center gap-2"):
             alert_icon = ui.icon("check_circle", color="green", size="20px")
@@ -219,7 +219,7 @@ with ui.column().classes("w-full max-w-7xl mx-auto p-6 gap-5"):
     available_ports = get_com_ports()
     state.com_port = available_ports[0]
 
-    with ui.card().classes("w-full bg-white border border-slate-200 shadow-sm p-4"):
+    with ui.card().classes("w-full bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
         with ui.row().classes("w-full items-end justify-between flex-wrap gap-4"):
             with ui.row().classes("items-end gap-4 flex-wrap"):
                 ui.select(["Simulation", "Real Meter (RS-485 Modbus)"], value="Simulation", label="Data Source").classes("w-56").bind_value(state, "mode")
@@ -246,40 +246,40 @@ with ui.column().classes("w-full max-w-7xl mx-auto p-6 gap-5"):
     # Electrical KPI Cards
     ui.label("ELECTRICAL SUB-METERING").classes("text-xs font-bold tracking-wider text-slate-500 uppercase mt-2 mb-1")
     with ui.grid(columns=5).classes("w-full gap-4"):
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("PHASE VOLTAGE").classes("text-xs text-slate-500 font-medium")
             lbl_volt = ui.label("230.0 V").classes("text-2xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("LOAD CURRENT").classes("text-xs text-slate-500 font-medium")
             lbl_curr = ui.label("12.50 A").classes("text-2xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("ACTIVE POWER").classes("text-xs text-slate-500 font-medium")
             lbl_kw = ui.label("2.76 kW").classes("text-2xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("POWER FACTOR").classes("text-xs text-slate-500 font-medium")
             lbl_pf = ui.label("0.96").classes("text-2xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("TOTAL ENERGY").classes("text-xs text-slate-500 font-medium")
             lbl_kwh = ui.label("2847.0 kWh").classes("text-2xl font-bold text-slate-900")
 
     # WAGES Utility Cards
     ui.label("WAGES UTILITY MONITORING").classes("text-xs font-bold tracking-wider text-slate-500 uppercase mt-2 mb-1")
     with ui.grid(columns=4).classes("w-full gap-4"):
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("WATER FLOW").classes("text-xs text-slate-500 font-medium")
             lbl_water = ui.label("125.4 L/min").classes("text-xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("COMPRESSED AIR").classes("text-xs text-slate-500 font-medium")
             lbl_air = ui.label("7.10 bar").classes("text-xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("NATURAL GAS").classes("text-xs text-slate-500 font-medium")
             lbl_gas = ui.label("42.0 m³/hr").classes("text-xl font-bold text-slate-900")
-        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4"):
+        with ui.card().classes("bg-white border border-slate-200 shadow-sm p-4 rounded-xl"):
             ui.label("PROCESS STEAM").classes("text-xs text-slate-500 font-medium")
             lbl_steam = ui.label("8.50 bar").classes("text-xl font-bold text-slate-900")
 
     # Live Multi-Utility Trend Chart
-    with ui.card().classes("w-full bg-white border border-slate-200 shadow-sm p-4 mt-2"):
+    with ui.card().classes("w-full bg-white border border-slate-200 shadow-sm p-4 mt-2 rounded-xl"):
         ui.label("LIVE WAGES & POWER TREND").classes("text-sm font-bold text-slate-900 mb-2")
         chart = ui.echart({
             "backgroundColor": "transparent",
@@ -309,10 +309,10 @@ def refresh_ui():
 
     alert_text.set_text(state.alert_message)
     if state.alert_status == "NORMAL":
-        alert_card.classes(replace="w-full bg-slate-50 border border-slate-200 shadow-none px-4 py-3")
+        alert_card.classes(replace="w-full bg-slate-50 border border-slate-200 shadow-none px-4 py-3 rounded-xl")
         alert_icon.props("name=check_circle color=green")
     else:
-        alert_card.classes(replace="w-full bg-amber-50 border border-amber-300 shadow-none px-4 py-3")
+        alert_card.classes(replace="w-full bg-amber-50 border border-amber-300 shadow-none px-4 py-3 rounded-xl")
         alert_icon.props("name=warning color=amber")
 
     chart.options["xAxis"]["data"] = list(state.timestamps)
@@ -325,5 +325,5 @@ def refresh_ui():
 # Timer loop
 ui.timer(2.0, poll_data)
 
-# Run server on port 7860 (Ready for Render/Cloud deployment)
+# Run server on port 7860 (Ready for Render cloud deployment)
 ui.run(title="Pro Energy EMS & SCADA", host="0.0.0.0", port=7860, reload=False)
